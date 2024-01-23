@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='DateFinder',
+    name='datefinder',
     version='1.0',
     packages=find_packages(),
     description='Machine learning approach to identifying date formats',
@@ -14,4 +14,7 @@ setup(
     install_requires=[
         "torch",
     ],
+    package_data={
+        'datefinder': ['*.pth']
+    }
 )
