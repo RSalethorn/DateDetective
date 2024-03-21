@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from datefinder.ModelHandler import ModelHandler
-from datefinder.BiLSTMTagger import BiLSTMTagger
+from datedetective.ModelHandler import ModelHandler
+from datedetective.BiLSTMTagger import BiLSTMTagger
 
-class DateFinder:
+class DateDetective:
     """
-    A class used as an access point for all DateFinder functionality
+    A class used as an access point for all DateDetective functionality
 
     ...
 
@@ -74,7 +74,7 @@ class DateFinder:
 
 
 if __name__ == "__main__":
-    df = DateFinder()
+    df = DateDetective()
     print(df.get_format("30/12/2023 12:52:23"))
     print(df.get_datetime("30/12/2023 12:52:23").day)
     print(df.__doc__)

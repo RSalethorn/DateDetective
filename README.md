@@ -1,10 +1,12 @@
-# DateFinder
+# DateDetective
 
 ## Introduction
-DateFinder is a Python package that takes a machine learning approach to identifying the format of date strings. This tool is useful for many applications like web scraping where the amount of formats used to represent dates is many and there is no need for 100% accuracy.
+
+DateDetective is a Python package that takes a machine learning approach to identifying the format of date strings. This tool is useful for many applications like web scraping where the amount of formats used to represent dates is many and there is no need for 100% accuracy.
 
 ## Compatible date formats
-DateFinder's model is trained to predict what combination of Python datetime module format codes would make up a given string representation of a date. Currently the model can identify the following format codes:
+
+DateDetective's model is trained to predict what combination of Python datetime module format codes would make up a given string representation of a date. Currently the model can identify the following format codes:
 | Format Code | Description | Examples |
 | ----------- | ----------- | -------- |
 | %d | Day of the month as zero-padded decimal number | 01, 02, ..., 30, 31 |
@@ -22,29 +24,35 @@ DateFinder's model is trained to predict what combination of Python datetime mod
 | %z | Time zone as UTC offset decimal number | +0000, -1200, +1000 |
 
 ## Installation
+
 ```
-pip install DateFinder
+pip install DateDetective
 ```
 
 ## Usage
 
 ### Import and Initialise
+
 ```python
 from datefinder import DateFinder
 df = DateFinder()
 ```
+
 By default DateFinder will use CUDA cores on your GPU (if available) for some of the calculations. If you do not want to use CUDA then initialise DateFinder like this:
+
 ```python
 df = DateFinder(useCuda=False)
 ```
 
 ### Generate datetime module format string from date string
+
 ```python
 >>>df.get_format("30/12/2023 12:52:23")
 '%d/%m/%Y %H:%M:%S'
 ```
 
 ### Create a datetime object string from date string
+
 ```python
 >>>df.get_datetime("30/12/2023 12:52:23")
 datetime.datetime(2023, 12, 30, 12, 52, 23)
@@ -53,12 +61,14 @@ datetime.datetime(2023, 12, 30, 12, 52, 23)
 > It's important to remember that although DateFinder can be accurate it sometimes gets a date wrong.
 
 ### How it was trained
-Take a look at my repo that is dedicated to the training of the DateFinder models for more information: [DateFinder Training GitHub Repo](https://github.com/RSalethorn/DateFinder-ModelDevelopment)
+
+Take a look at my repo that is dedicated to the training of the DateDetective models for more information: [DateDetective Training GitHub Repo](https://github.com/RSalethorn/DateFinder-ModelDevelopment)
 
 # License
+
 Apache License 2.0. See LICENSE file.
 
 # Contact
-Rob Salethorn - rob@salethorn.com
-Repo link - https://github.com/RSalethorn/DateFinder
 
+Rob Salethorn - rob@salethorn.com
+Repo link - https://github.com/RSalethorn/DateDetective

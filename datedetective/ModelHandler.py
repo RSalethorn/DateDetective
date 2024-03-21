@@ -1,7 +1,7 @@
 import torch
 
-from datefinder.BiLSTMTagger import BiLSTMTagger
-from datefinder.Encoding import char_to_index, index_to_tag
+from datedetective.BiLSTMTagger import BiLSTMTagger
+from datedetective.Encoding import char_to_index, index_to_tag
 
 MODEL = {
             "location": "./datefinder/model_Ms_Zoey_Fadel_MD_state_dict.pth",
