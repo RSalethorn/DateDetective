@@ -11,9 +11,6 @@ setup(
     author_email='rob@salethorn.com',
     url='https://github.com/RSalethorn/DateDetective',
     include_package_data=True,
-    install_requires=[
-        "torch",
-    ],
     package_data={
         'datefinder': ['*.pth']
     }

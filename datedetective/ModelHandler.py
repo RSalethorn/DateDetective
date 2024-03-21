@@ -1,10 +1,12 @@
-import torch
-
 from datedetective.BiLSTMTagger import BiLSTMTagger
 from datedetective.Encoding import char_to_index, index_to_tag
 
+from importlib import resources
+
+import torch
+
 MODEL = {
-            "location": "./datefinder/model_Ms_Zoey_Fadel_MD_state_dict.pth",
+            "location": "./datedetective/model_Ms_Zoey_Fadel_MD_state_dict.pth",
             "num_characters": len(char_to_index),
             "num_tags": len(index_to_tag),
             "embedding_dim": 32,
@@ -44,13 +46,16 @@ class ModelHandler:
         model_location (str): File path for the model file.
 
         """
+
         self.model = BiLSTMTagger(MODEL["num_characters"], MODEL["num_tags"], MODEL["embedding_dim"], MODEL["hidden_dim"])
         
         # Determine the device
         self.device = torch.device("cuda" if torch.cuda.is_available() and useCuda is True else "cpu")
         self.model = self.model.to(self.device)
 
-        self.model.load_state_dict(torch.load(MODEL['location'], map_location=self.device))
+        # Load the model state dict from the package resources
+        with resources.path('datedetective', 'model_Ms_Zoey_Fadel_MD_state_dict.pth') as model_path:
+            self.model.load_state_dict(torch.load(model_path, map_location=self.device))
 
         print(f"Loaded model - {MODEL['location']}, to {self.device}")
     

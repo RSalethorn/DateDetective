@@ -1,5 +1,12 @@
 from datetime import datetime
 
+try:
+    import torch
+    print("PyTorch installation has been found.")
+except ImportError:
+    raise ImportError("PyTorch installation can't be found in current Python environment. PyTorch is required for DateDetective to work. \nTo install PyTorch go to 'https://pytorch.org/get-started/locally/' to find the install command relevant to you.")
+
+
 from datedetective.ModelHandler import ModelHandler
 from datedetective.BiLSTMTagger import BiLSTMTagger
 

@@ -25,6 +25,11 @@ DateDetective's model is trained to predict what combination of Python datetime 
 
 ## Installation
 
+Firstly you will need to ensure that the version of PyTorch that is best for you is installed in the Python environment you are using. If possible use CUDA as this should increase date detection speed. Currently PyTorch's website has an install command finder at:
+https://pytorch.org/get-started/locally/
+
+After PyTorch is installed you can install DateDetective via Pip.
+
 ```
 pip install DateDetective
 ```
@@ -34,27 +39,27 @@ pip install DateDetective
 ### Import and Initialise
 
 ```python
-from datefinder import DateFinder
-df = DateFinder()
+from datedetective import DateDetective
+dd = DateDetective()
 ```
 
-By default DateFinder will use CUDA cores on your GPU (if available) for some of the calculations. If you do not want to use CUDA then initialise DateFinder like this:
+By default DateDetective will use CUDA cores on your GPU (if available) for some of the calculations. If you do not want to use CUDA then initialise DateFinder like this:
 
 ```python
-df = DateFinder(useCuda=False)
+df = DateDetective(useCuda=False)
 ```
 
 ### Generate datetime module format string from date string
 
 ```python
->>>df.get_format("30/12/2023 12:52:23")
+>>>dd.get_format("30/12/2023 12:52:23")
 '%d/%m/%Y %H:%M:%S'
 ```
 
 ### Create a datetime object string from date string
 
 ```python
->>>df.get_datetime("30/12/2023 12:52:23")
+>>>dd.get_datetime("30/12/2023 12:52:23")
 datetime.datetime(2023, 12, 30, 12, 52, 23)
 ```
 
