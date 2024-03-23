@@ -6,7 +6,7 @@ from importlib import resources
 import torch
 
 MODEL = {
-            "location": "./datedetective/model_Ms_Zoey_Fadel_MD_state_dict.pth",
+            "location": 'model_Ms_Zoey_Fadel_MD_state_dict.pth',
             "num_characters": len(char_to_index),
             "num_tags": len(index_to_tag),
             "embedding_dim": 32,

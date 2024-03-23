@@ -78,6 +78,37 @@ class DateDetective:
         date = datetime.strptime(date, date_format)
 
         return date
+    
+    def get_list_format(self, date_str_list) -> str:
+        identified_formats = {}
+        for date_str in date_str_list:
+            date_format = self.get_format(date_str)
+
+            if date_format in identified_formats:
+                identified_formats[date_format] += 1
+            else:
+                identified_formats[date_format] = 1
+
+        sorted_identified_formats = sorted(identified_formats.items(), key=lambda x:x[1], reverse=True)
+
+        most_matched_format = sorted_identified_formats[0][0]
+
+        return most_matched_format
+    
+    
+    def get_list_datetime(self, date_str_list) -> list[datetime]:
+        date_format = self.get_list_format(date_str_list)
+
+        date_obj_list = []
+
+        for date_str in date_str_list:
+            date_obj = datetime.strptime(date_str, date_format)
+            date_obj_list.append(date_obj)
+        
+        return date_obj_list
+
+            
+
 
 
 if __name__ == "__main__":
