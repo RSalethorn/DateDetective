@@ -80,6 +80,15 @@ class DateDetective:
         return date
     
     def get_list_format(self, date_str_list) -> str:
+        """Takes a list of date strings, and gets format predictions for each date in list. Then finds the format that is predicted most often.
+
+        Parameters:
+        date_str_list (str): A list of string representations of dates.
+
+        Returns:
+        str: A string format of the dates, that is predicted most often from the list.
+
+        """
         identified_formats = {}
         for date_str in date_str_list:
             date_format = self.get_format(date_str)
@@ -97,6 +106,15 @@ class DateDetective:
     
     
     def get_list_datetime(self, date_str_list) -> list[datetime]:
+        """Takes a list of date strings, and gets format predictions for each date in list. Each date string in the list is then converted to a datetime object, using the format that is predicted the most in the date list.
+
+        Parameters:
+        date_str_list (str): A list of string representations of dates.
+
+        Returns:
+        list[datetime]: A list of datetime objects that represent the original list of string dates.
+
+        """
         date_format = self.get_list_format(date_str_list)
 
         date_obj_list = []
